@@ -9,7 +9,7 @@ from colorama import init, Fore
 
 init(autoreset=True)
 
-def dowload(url, out_path="downloads/videos"):
+def download(url, out_path="downloads/videos"):
     
     def progress(stream, data_chunk, bytes_remaing ):
         bar_format = '{l_bar}{bar}| {n_fmt}/{total_fmt} {postfix}'
