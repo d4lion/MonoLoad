@@ -6,3 +6,11 @@ videos_itags_resolution = {
     "240p": "133",
     "144p": "160"
 }
+
+audio_itags_quality = {
+    "48kbps" : "139",
+    "128kbps" : "140",
+    "50kbps" : "249",
+    "70kbps" : "250",
+    "160kbps" : "251"
+}
