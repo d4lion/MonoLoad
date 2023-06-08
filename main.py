@@ -1,4 +1,5 @@
-from src import video_dowload
+from src import video_download as video
+from src import audio_download as audio
 from colorama import Fore, init
 
 init(autoreset=True)
@@ -16,7 +17,13 @@ MonoLoad = """
 def main():
     print(Fore.CYAN + MonoLoad)
     url = input(Fore.YELLOW + "Type the url you want to dowload: " + Fore.WHITE) 
-    video_dowload.dowload(url)
+
+    format_download = input("\n Do you want to download mp3 or mp4 fille?: ")
+
+    if format_download is "mp3":
+        audio.download(url)
+    else:
+        video.download(url)
 
 
 
