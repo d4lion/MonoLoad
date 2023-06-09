@@ -1,5 +1,5 @@
-from src import video_download as video
-from src import audio_download as audio
+from src.MonoDownloads import video_download as video
+from src.MonoDownloads import audio_download as audio
 from colorama import Fore, init
 
 init(autoreset=True)
@@ -20,7 +20,7 @@ def main():
 
     format_download = input("\n Do you want to download mp3 or mp4 fille?: ")
 
-    if format_download is "mp3":
+    if format_download == "mp3":
         audio.download(url)
     else:
         video.download(url)
