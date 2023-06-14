@@ -2,7 +2,7 @@ from src.MonoDownloads import video_download as video
 from src.MonoDownloads import audio_download as audio
 
 from src.MultiDownloads import video_downloads as multiVideo
-
+from src.MultiDownloads import audio_downloads as multiAudio
 from colorama import Fore, init
 
 init(autoreset=True)
@@ -42,7 +42,7 @@ def main():
             for url_video in videos_url:
                 url.append(url_video[0])
                     
-        multiVideo.download(url)
+        multiAudio.download(url)
 
     multiDownload()
 
