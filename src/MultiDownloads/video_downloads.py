@@ -17,6 +17,6 @@ def multi_download(url: str, out_path="downloads/videos") -> None:
 
 def download(videos_url: list, out_path="downloads/videos") -> None:
     # Send in a pool Threads the videos url to download
-    with ThreadPoolExecutor(max_workers=2) as executor:
+    with ThreadPoolExecutor(max_workers=4) as executor:
         for url in videos_url:
             executor.submit(multi_download, url)
