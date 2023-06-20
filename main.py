@@ -1,5 +1,8 @@
-from src import video_download as video
-from src import audio_download as audio
+from src.MonoDownloads import video_download as video
+from src.MonoDownloads import audio_download as audio
+
+from src.MultiDownloads import video_downloads as multiVideo
+from src.MultiDownloads import audio_downloads as multiAudio
 from colorama import Fore, init
 
 init(autoreset=True)
@@ -15,16 +18,33 @@ MonoLoad = """
 
 
 def main():
-    print(Fore.CYAN + MonoLoad)
-    url = input(Fore.YELLOW + "Type the url you want to dowload: " + Fore.WHITE) 
 
-    format_download = input("\n Do you want to download mp3 or mp4 fille?: ")
+    def monoDownload():
+        print(Fore.CYAN + MonoLoad)
+        url = input(Fore.YELLOW + "Type the url you want to dowload: " + Fore.WHITE) 
 
-    if format_download is "mp3":
-        audio.download(url)
-    else:
-        video.download(url)
+        format_download = input("\n Do you want to download mp3 or mp4 fille?: ")
 
+        if format_download == "mp3":
+            audio.download(url)
+        elif format_download == "mp4":
+            video.download(url)
+        else:
+            print("Select a correct option.")
+            return monoDownload()
+
+    def multiDownload():
+        # format_download = input("\n Do you want to download mp3 or mp4 files?: ")
+        url = list()
+
+        with open('videos.txt', 'r') as f:
+            videos_url = [line.split('\n') for line in f]
+            for url_video in videos_url:
+                url.append(url_video[0])
+                    
+        multiAudio.download(url)
+
+    multiDownload()
 
 
 
