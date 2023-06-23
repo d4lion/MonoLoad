@@ -6,3 +6,6 @@ pyvenv.cfg
 
 # Python Cache
 __pycache__
+
+# Testing files
+test.py
