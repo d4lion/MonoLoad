@@ -27,7 +27,7 @@ def main():
     
     parser.add_argument('-f', '--format', choices=['video', 'audio'], default='video')
     parser.add_argument('-m', '--multidownload', type=bool, default=False)
-    parser.add_argument('-df', '--datafile', type=str, default='urls.txr')
+    parser.add_argument('-df', '--datafile', type=str, default='urls.txt')
     parser.add_argument('-t', '--threads', default=2, type=int)
     parser.add_argument('-vq', '--videoquality', choices=['1080p', '720p', '480p', '360p', '240p', '144p'], default='480p')
     parser.add_argument('-aq', '--audioquality', choices=['48kbps', '128kbps', '50kbps', '70kbps', '160kbps'], default='128kbps')
