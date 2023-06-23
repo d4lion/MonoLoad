@@ -6,7 +6,7 @@ from src.MultiDownloads import video_downloads as multiVideo
 from src.MultiDownloads import audio_downloads as multiAudio
 from colorama import Fore, init
 
-
+SUCCESS = 0
 
 def main():
 
@@ -70,6 +70,10 @@ def main():
 
     if args.multidownload:
         multiDownload(format=args.format, file_name=args.datafile, threads=args.threads, video_quality=args.videoquality, audio_quality=args.audioquality)
+        return SUCCESS
+    else:
+        monoDownload()
+        return SUCCESS
 
 
 
