@@ -18,7 +18,7 @@ def multi_download(url: str, quality:str ,out_path: str) -> None:
 
 
 
-def download(videos_url: list, threads: int , quality: str , filename: str ,out_path="downloads/videos") -> None:    
+def download(videos_url: list, threads: int , quality: str , filename: str ,out_path=f"{getcwd()}/downloads/videos") -> None:    
     # Send in a pool Threads the videos url to download
     with ThreadPoolExecutor(threads) as executor:
         for url in videos_url:

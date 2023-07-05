@@ -1,4 +1,4 @@
-import os
+from os import getcwd
 from tqdm import tqdm
 from time import sleep
 
@@ -9,7 +9,7 @@ from colorama import init, Fore
 
 init(autoreset=True)
 
-def download(url, out_path="downloads/videos"):
+def download(url, out_path=f"{getcwd()}/downloads/videos"):
     
     def progress(stream, data_chunk, bytes_remaing ):
         bar_format = '{l_bar}{bar}| {n_fmt}/{total_fmt} {postfix}'
@@ -33,7 +33,7 @@ def download(url, out_path="downloads/videos"):
     
 
 
-    video = YouTube(url, on_progress_callback=progress)
+    video = YouTube(url)
     stream_data = video.streams.filter(file_extension="mp4")
     resolutions = get_resolutions(stream_data)
 

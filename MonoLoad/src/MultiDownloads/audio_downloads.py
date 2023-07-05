@@ -1,3 +1,4 @@
+from os import getcwd
 from .itags import audio_itags_quality
 from pytube import YouTube, streams
 from colorama import Fore, init
@@ -16,7 +17,7 @@ def multi_download(url: str, quality:str , out_path:str):
     print(f"{Fore.GREEN}Succesfully downloaded: {video.title}")
 
 
-def download(audios_url: list, quality="128kbps", threads=2, out_path="downloads/audios"):
+def download(audios_url: list, quality="128kbps", threads=2, out_path=f"{getcwd()}/downloads/audios"):
     """
     Variables
     ---------
