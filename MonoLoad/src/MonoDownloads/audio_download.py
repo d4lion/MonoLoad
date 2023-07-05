@@ -1,10 +1,11 @@
 from pytube import YouTube, streams
 from colorama import init, Fore
 from .itags import audio_itags_quality
+from os import path, getcwd
 
 init(autoreset=True)
 
-def download(url, out_path="downloads/audios"):
+def download(url, out_path=f"{getcwd()}/downloads/audios"):
 
     def get_resolution(streams_data):
         resolutions = list()
@@ -14,13 +15,13 @@ def download(url, out_path="downloads/audios"):
 
         return resolutions
     
-    def audio_quality_download(resolutions, video, ):
+    def audio_quality_download(resolutions, video):
         print(f"\n video title: {Fore.RED + video.title} \n {Fore.WHITE} \n qualities: {resolutions}")
 
         audio_quality_to_download = input("\n Type the quality: ")
         
         
-        return audio_quality_to_download, 
+        return audio_quality_to_download 
         
 
 
