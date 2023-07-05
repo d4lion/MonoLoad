@@ -8,5 +8,6 @@ pyvenv.cfg
 __pycache__
 
 # Testing files
+.pytest_cache
 test.py
 downloads
