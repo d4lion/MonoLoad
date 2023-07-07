@@ -1,7 +1,7 @@
 from pytube import YouTube, streams
 from colorama import init, Fore
 from .itags import audio_itags_quality
-from os import path, getcwd
+from os import path, getcwd, rename
 
 init(autoreset=True)
 
@@ -22,6 +22,10 @@ def download(url, out_path=f"{getcwd()}/downloads/audios"):
         
         
         return audio_quality_to_download 
+    
+
+    def fix_extensions(out_path, song_name):
+        pass
         
 
 
@@ -36,6 +40,13 @@ def download(url, out_path=f"{getcwd()}/downloads/audios"):
 
         stream = video.streams.get_by_itag(audio_itags_quality.get(audio_qulity_to_dowload))
         stream.download(output_path=out_path)
+
+
+
+
+        rename(f"{out_path}/{video.title}.mp4", f"{out_path}/{video.title}.mp3")
+
+
         print(f"\n {Fore.GREEN} Done!!")
     except Exception as e:
         print(f"\n {e} \n Check the video url and try again.")
