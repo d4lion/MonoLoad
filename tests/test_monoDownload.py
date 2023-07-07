@@ -1,9 +1,7 @@
 import pytest
-import unittest
 
-from pytest import MonkeyPatch
 from unittest.mock import patch
-from os import getcwd, listdir, path
+from os import getcwd, path
 from MonoLoad.src.MonoDownloads import audio_download as audio
 
 @pytest.mark.parametrize(
