@@ -1,4 +1,21 @@
-# MonoLoad
+<div align="center">
+  <p>
+    <a href="#"><img src="https://cdn-user-icons.flaticon.com/80868/80868193/1688700448846.svg?token=exp=1688701367~hmac=f5540c926d70557260465e99477e80d2" width="456" height="143" alt="monoload logo" /></a>
+  </p>
+  <h1>MonoLoad</h1>
+  <p align="center">
+	<a href='https://monoload.readthedocs.io/en/latest/?badge=latest'>
+    <img src='https://readthedocs.org/projects/monoload/badge/?version=latest' />
+</a>
+	<a href="https://pypi.org"><img src="https://img.shields.io/badge/python-3.11.4-blue" /></a>
+	      <a href="https://github.com/daliondev" alt="Activity">
+        <img src="https://img.shields.io/badge/owner-daliondev-red" /></a>
+  </p>
+
+</div>
+
+
+
 It is a terminal program focused on downloading videos from the YouTube site which seeks to provide different quality formats to the user to download both audio and video files.
 
 ## Installation
