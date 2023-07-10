@@ -1,4 +1,4 @@
-from os import getcwd
+from os import getcwd, listdir, rename
 from .itags import audio_itags_quality
 from pytube import YouTube, streams
 from colorama import Fore, init
@@ -35,3 +35,10 @@ def download(audios_url: list, quality="128kbps", threads=2, out_path=f"{getcwd(
     with ThreadPoolExecutor(max_workers=threads) as executor:
         for url in audios_url:
             executor.submit(multi_download, url=url, quality=quality, out_path=out_path)
+
+    downloaded_audios = listdir(out_path)
+
+    for audio in downloaded_audios:
+        audio = audio.split(".")
+        if audio[0] != "mp3":
+            rename(f"{out_path}/{audio[0]}.{audio[1]}", f"{out_path}/{audio[0]}.mp3")
