@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-    <a href="#"><img src="https://cdn-user-icons.flaticon.com/80868/80868193/1688700448846.svg?token=exp=1688701367~hmac=f5540c926d70557260465e99477e80d2" width="456" height="143" alt="monoload logo" /></a>
+    <a href="#"><img src="https://github.com/daliondev/MonoLoad/assets/111100025/503ba04a-4843-47d8-a925-974a350352c4" width="auto" height="150px" alt="monoload logo" /></a>
   </p>
   <h1>MonoLoad</h1>
   <p align="center">
