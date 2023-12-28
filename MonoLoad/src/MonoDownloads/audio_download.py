@@ -1,7 +1,7 @@
-from pytube import YouTube, streams
+from pytube import YouTube
 from colorama import init, Fore
 from .itags import audio_itags_quality
-from os import getcwd, rename, listdir, path
+from os import getcwd, rename, path
 
 init(autoreset=True)
 
