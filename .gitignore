@@ -3,6 +3,7 @@ include
 Lib
 Scripts
 pyvenv.cfg
+.idea
 
 # Python Cache
 __pycache__
