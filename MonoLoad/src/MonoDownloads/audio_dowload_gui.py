@@ -13,23 +13,28 @@ audioTagsQuality = {
 # Se toma el directorio de trabajo actual
 cwd = os.getcwd()
 
+
 # Haciendo uso de los caracteres se toman los ultimos 27 para quedar en la carpeta raiz del proyecto
-root = cwd.replace(cwd[-27:], "")  # --> C:\Users\...\MonoLoad
 
 
-def download(video: YouTube,
-             resolution: Optional[str] = '128kbps',
-             out_path: Optional[str] = f'{root}/downloads/audios') -> str:
+def download_audio(video: YouTube,
+                   resolution: Optional[str] = '128kbps',
+                   video_title: Optional[str] = '',
+                   out_path: Optional[str] = f'{cwd}/downloads/audios') -> str:
     quality = audioTagsQuality.get(resolution)
     try:
         stream = video.streams.get_by_itag(quality)
-        return stream.download(output_path=out_path)
+        if video_title == '':
+            video_title = stream.title
+
+        dowload_path = stream.download(output_path=out_path, filename=f'{video_title} - {resolution}.mp3')
+        return dowload_path
 
     except Exception as e:
         print(e)
 
 
-def get_resolution(url: str) -> tuple:
+def get_audio_resolution(url: str) -> tuple:
     """
     :param url:
         receives as a parameter the url of some YouTube video of which you want to
