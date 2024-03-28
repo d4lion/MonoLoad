@@ -1,6 +1,8 @@
 from pytube import YouTube
 from typing import Optional
-import os
+from os import getcwd
+from re import sub
+
 
 audioTagsQuality = {
     "48kbps": 139,
@@ -11,7 +13,7 @@ audioTagsQuality = {
 }
 
 # Se toma el directorio de trabajo actual
-cwd = os.getcwd()
+cwd = getcwd()
 
 
 # Haciendo uso de los caracteres se toman los ultimos 27 para quedar en la carpeta raiz del proyecto
@@ -25,9 +27,14 @@ def download_audio(video: YouTube,
     try:
         stream = video.streams.get_by_itag(quality)
         if video_title == '':
-            video_title = stream.title
+            title = stream.title
+            clean_title = title.lower()
+            clean_title = sub(r"[^\w\s-]", "", clean_title)
 
-        dowload_path = stream.download(output_path=out_path, filename=f'{video_title} - {resolution}.mp3')
+            video_title = clean_title
+
+        dowload_path = stream.download(output_path=out_path, filename=f'{
+                                       video_title} - {resolution}.mp3')
         return dowload_path
 
     except Exception as e:
