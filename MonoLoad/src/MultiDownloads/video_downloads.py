@@ -1,5 +1,4 @@
 from os import getcwd
-
 from .itags import videos_itags_resolution
 from pytube import YouTube, streams
 from colorama import init, Fore
@@ -13,7 +12,7 @@ CWD = getcwd()
 def multi_download(url: str, quality:str ,out_path: str) -> None:
     video = YouTube(url)
     stream = video.streams.get_by_itag(videos_itags_resolution.get(quality))
-    stream.download(output_path=out_path)
+    stream.download(output_path=out_path, filename=f"{video.title}.mp4")
     print(f"{Fore.GREEN}Succesfully downloaded: {video.title}")
 
 

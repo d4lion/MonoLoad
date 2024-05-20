@@ -3,9 +3,13 @@ include
 Lib
 Scripts
 pyvenv.cfg
+.idea
 
 # Python Cache
 __pycache__
+share
+
+
 
 # Testing files
 .pytest_cache

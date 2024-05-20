@@ -3,21 +3,21 @@ from .itags import audio_itags_quality
 from pytube import YouTube, streams
 from colorama import Fore, init
 from concurrent.futures import ThreadPoolExecutor
-
-
+from typing import Required, Optional
 
 
 init(autoreset=False)
 
-def multi_download(url: str, quality:str , out_path:str):
+def multi_download(url: Required[str], quality: Required[str] , out_path: Required[str]):
     video = YouTube(url)
     quality_to_itag = audio_itags_quality.get(quality)
     stream = video.streams.get_by_itag(quality_to_itag)
-    stream.download(output_path=out_path)
+    stream.download(output_path=out_path, filename=f"{video.title}.mp3")
     print(f"{Fore.GREEN}Succesfully downloaded: {video.title}")
 
 
-def download(audios_url: list, quality="128kbps", threads=2, out_path=f"{getcwd()}/downloads/audios"):
+def download(audios_url: Required[list], quality: Optional[str]="128kbps", threads: Optional[int]=2, out_path: Optional[
+    str] = f"{getcwd()}/downloads/audios") -> list[str]:
     """
     Variables
     ---------
@@ -38,7 +38,4 @@ def download(audios_url: list, quality="128kbps", threads=2, out_path=f"{getcwd(
 
     downloaded_audios = listdir(out_path)
 
-    for audio in downloaded_audios:
-        audio = audio.split(".")
-        if audio[0] != "mp3":
-            rename(f"{out_path}/{audio[0]}.{audio[1]}", f"{out_path}/{audio[0]}.mp3")
+    return downloaded_audios
