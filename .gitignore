@@ -7,6 +7,9 @@ pyvenv.cfg
 
 # Python Cache
 __pycache__
+share
+
+
 
 # Testing files
 .pytest_cache
