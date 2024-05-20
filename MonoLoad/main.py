@@ -1,6 +1,7 @@
 import flet as ft
 from src.MonoDownloads.audio_dowload_gui import get_audio_resolution, download_audio
 from src.transformations import transform_config_to_dict
+from time import sleep
 
 # Config
 CONFIG: dict = transform_config_to_dict()
@@ -10,7 +11,7 @@ WIDTH = CONFIG.get("WIDTH")
 HEIGHT = CONFIG.get("HEIGHT")
 RESIZABLE = CONFIG.get("WINDOW_RESIZABLE")
 MAXIMIZABLE = CONFIG.get("WINDOW_MAXIMIZABLE")
-
+ALWAYS_ON_TOP = CONFIG.get("ALWAYS_ON_TOP")
 
 def main(page: ft.Page):
     global pages
@@ -31,6 +32,7 @@ def main(page: ft.Page):
     page.window_height = HEIGHT
     page.window_resizable = RESIZABLE
     page.window_maximizable = MAXIMIZABLE
+    page.window_always_on_top = ALWAYS_ON_TOP
 
     page.appbar = ft.AppBar(
         title=ft.Text('MonoLoad'),
@@ -129,13 +131,16 @@ def main(page: ft.Page):
         dic = {}
         for checkBox in qualities.controls:
             dic[checkBox.label] = checkBox.value
-            for key, value in dic.items():
-                if value:
-                    out_path = download_audio(
-                        video, key, video_title=NameTextField.value)
-                    page.snack_bar = ft.SnackBar(ft.Text(out_path))
-                    page.snack_bar.open = True
-                    page.update()
+
+        for key, value in dic.items():
+            if value:
+                    # Se realiza el llamado al snack_bar para decirle al usuario donde se guarda su archivo
+                out_path = download_audio(
+                    video, key, video_title=NameTextField.value)
+                page.snack_bar = ft.SnackBar(ft.Text(out_path))
+                page.snack_bar.open = True
+                sleep(0.2)
+                page.update()
 
     DownloadAudios = ft.Container(
         content=ft.Column(
@@ -187,7 +192,7 @@ def main(page: ft.Page):
     }
 
     page.on_route_change = route_change
-    page.go('/download_audios')
+    page.go('/')
     page.update()
 
 
