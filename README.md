@@ -45,37 +45,20 @@ The Pytube library in its ***cipher.py*** file contains a problem decrypting You
 In line number **264** in which the variable of a list is created, we must **change** **all** its content **to the following:**
 ```python
 function_patterns = [
-r'a\.[a-zA-Z]\s*&&\s*\([a-z]\s*=\s*a\.get\("n"\)\)\s*&&.*?\|\|\s*([a-z]+)',
-r'\([a-z]\s*=\s*([a-zA-Z0-9$]+)(\[\d+\])?\([a-z]\)',
+    r'a\.[a-zA-Z]\s*&&\s*\([a-z]\s*=\s*a\.get\("n"\)\)\s*&&.*?\|\|\s*([a-z]+)',
+    r'\([a-z]\s*=\s*([a-zA-Z0-9$]+)(\[\d+\])\([a-z]\)',
 ]
 ```
 ## Usage
 The use of the program is divided into Download and Multi Download Mode and are determined according to the needs that the user seeks to cover.
 
-### Mono Download
+### Mono Download and Multi Download
 MonoLoad contains two ways to use which vary depending on the needs of each user, if you only want to download a video in mp3 or mp4 format, follow the steps below.
 
 ```cdm
 python main.py
 ```
 
-After executing this, the program will guide you to provide the url and the quality with which you want to download the video or audio in addition to the format in which the download will be made.
 
-### Multi Download
-To make use of multiple downloads, you must know the different flags that the program contains when executing it, which are, 
-
-> **the -m flag is required to enable multi download mode**
-
-|  Flag | Description |
-|--|--|
-| -m |Boolean type receives true or false to activate multi download mode, by default it has the value of false |
-| -f | File format, has two choices video, audio |
-| -df | name of the file from which the urls of the videos to be downloaded will be taken, default value **'urls.txt'** |
-| -t | number of threads that you want to dedicate from the processor to downloading the files, by default **2 threads** are used|
-| -vq | video quality in a range of **1080p** up to **144p**|
-| -aq | audio quality in a range of **160kbps** up to **48kbps**|
-
-#### Example
-To download files in the 720p quality using 4 threads
-> ```python main.py -m True -f video -vq 720p -t 4```
-
+### Demo
+The above will open a pop-up window in which you will have the option to download both videos and audios from YouTube, and if necessary you can download several versions in different qualities of the video or audio (This functionality does not limit the download time as it is done in parallel)
