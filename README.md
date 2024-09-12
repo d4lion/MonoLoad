@@ -62,3 +62,7 @@ python main.py
 
 ### Demo
 The above will open a pop-up window in which you will have the option to download both videos and audios from YouTube, and if necessary you can download several versions in different qualities of the video or audio (This functionality does not limit the download time as it is done in parallel)
+
+https://github.com/user-attachments/assets/2ac716d2-304f-4947-a10f-9c3bb3ab3813
+
+
