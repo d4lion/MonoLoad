@@ -1,6 +1,6 @@
 from os import getcwd, path
 from .itags import videos_itags_resolution
-from pytube import YouTube, streams
+from pytubefix import YouTube, streams
 from colorama import init, Fore
 from concurrent.futures import ThreadPoolExecutor
 

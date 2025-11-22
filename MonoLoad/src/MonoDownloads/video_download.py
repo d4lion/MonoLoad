@@ -1,7 +1,7 @@
 from os import getcwd, path
 from tqdm import tqdm
 
-from pytube import YouTube, streams
+from pytubefix import YouTube, streams
 from .itags import videos_itags_resolution as video_itags
 from colorama import init, Fore
 

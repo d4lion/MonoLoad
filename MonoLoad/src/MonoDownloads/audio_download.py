@@ -1,4 +1,4 @@
-from pytube import YouTube, streams, StreamQuery, Stream
+from pytubefix import YouTube, streams, StreamQuery, Stream
 from colorama import init, Fore
 from .itags import audio_itags_quality
 from os import getcwd, rename, listdir, path

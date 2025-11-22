@@ -1,4 +1,4 @@
-from pytube import YouTube
+from pytubefix import YouTube
 from typing import Optional
 from os import getcwd, path
 from re import sub

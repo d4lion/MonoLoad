@@ -1,6 +1,6 @@
 from os import getcwd, listdir, path
 from .itags import audio_itags_quality
-from pytube import YouTube, streams
+from pytubefix import YouTube, streams
 from colorama import Fore, init
 from concurrent.futures import ThreadPoolExecutor
 from typing import Required, Optional
