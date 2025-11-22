@@ -1,6 +1,6 @@
-from pytube import YouTube
+from pytubefix import YouTube
 from typing import Optional
-from os import getcwd
+from os import getcwd, path
 from re import sub
 
 
@@ -22,7 +22,11 @@ cwd = getcwd()
 def download_audio(video: YouTube,
                    resolution: Optional[str] = '128kbps',
                    video_title: Optional[str] = '',
-                   out_path: Optional[str] = f'{cwd}/downloads/audios') -> str:
+                   out_path: Optional[str] = None) -> str:
+    """Download audio from YouTube video"""
+    if out_path is None:
+        out_path = path.join(cwd, 'downloads', 'audios')
+        
     quality = audioTagsQuality.get(resolution)
     try:
         stream = video.streams.get_by_itag(quality)

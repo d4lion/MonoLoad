@@ -1,4 +1,4 @@
-from pytube import YouTube, streams, StreamQuery, Stream
+from pytubefix import YouTube, streams, StreamQuery, Stream
 from colorama import init, Fore
 from .itags import audio_itags_quality
 from os import getcwd, rename, listdir, path
@@ -7,15 +7,13 @@ from re import sub
 
 init(autoreset=True)
 
-def download(url: Required[str], out_path: Optional[str] = f"{getcwd()}/downloads/audios") -> NoReturn:
+def download(url: Required[str], out_path: Optional[str] = None) -> NoReturn:
+    if out_path is None:
+        out_path = path.join(getcwd(), "downloads", "audios")
 
     def get_resolution(streams_data: StreamQuery) -> list[str]:
-        resolutions = list()
-
-        for stream in streams_data:
-            resolutions.append(stream.abr)
-
-        return resolutions
+        """Extract available resolutions from streams"""
+        return [stream.abr for stream in streams_data]
     
     def audio_quality_download(resolutions: Required[list[str]], video) -> str:
         print(f"\n video title: {Fore.RED + video.title} \n {Fore.WHITE} \n qualities: {resolutions}")

@@ -38,7 +38,7 @@ def main(page: ft.Page):
         title=ft.Text('MonoLoad'),
         center_title=False,
         actions=[
-            ft.IconButton(ft.icons.WB_SUNNY_OUTLINED,
+            ft.IconButton(ft.Icons.WB_SUNNY_OUTLINED,
                           on_click=change_theme_mode),
             ft.PopupMenuButton(
                 items=[

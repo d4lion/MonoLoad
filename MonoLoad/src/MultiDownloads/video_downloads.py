@@ -1,6 +1,6 @@
-from os import getcwd
+from os import getcwd, path
 from .itags import videos_itags_resolution
-from pytube import YouTube, streams
+from pytubefix import YouTube, streams
 from colorama import init, Fore
 from concurrent.futures import ThreadPoolExecutor
 
@@ -17,7 +17,11 @@ def multi_download(url: str, quality:str ,out_path: str) -> None:
 
 
 
-def download(videos_url: list, threads: int , quality: str , filename: str ,out_path=f"{getcwd()}/downloads/videos") -> None:    
+def download(videos_url: list, threads: int , quality: str , filename: str ,out_path=None) -> None:
+    """Download multiple videos concurrently"""
+    if out_path is None:
+        out_path = path.join(getcwd(), "downloads", "videos")
+        
     # Send in a pool Threads the videos url to download
     with ThreadPoolExecutor(threads) as executor:
         for url in videos_url:
