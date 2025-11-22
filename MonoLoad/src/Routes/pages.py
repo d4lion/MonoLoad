@@ -1,4 +1,6 @@
 import flet as ft
+from time import sleep
+from MonoLoad.src.MonoDownloads.audio_dowload_gui import get_audio_resolution, download_audio
 
 
 def HomeComponent(page):
@@ -26,9 +28,6 @@ def HomeComponent(page):
 
 
 def DowloadAudioComponent(page):
-    from time import sleep
-    from MonoLoad.src.MonoDownloads.audio_dowload_gui import get_audio_resolution, download_audio
-
     qualities = ft.Row(alignment=ft.MainAxisAlignment.CENTER,
                        spacing=40, scroll=ft.ScrollMode.AUTO)
     NameTextField = ft.TextField(label='Name')

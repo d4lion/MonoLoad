@@ -1,4 +1,4 @@
-from os import getcwd, listdir, rename
+from os import getcwd, listdir, path
 from .itags import audio_itags_quality
 from pytube import YouTube, streams
 from colorama import Fore, init
@@ -17,7 +17,7 @@ def multi_download(url: Required[str], quality: Required[str] , out_path: Requir
 
 
 def download(audios_url: Required[list], quality: Optional[str]="128kbps", threads: Optional[int]=2, out_path: Optional[
-    str] = f"{getcwd()}/downloads/audios") -> list[str]:
+    str] = None) -> list[str]:
     """
     Variables
     ---------
@@ -30,7 +30,8 @@ def download(audios_url: Required[list], quality: Optional[str]="128kbps", threa
     * out_path (str): In this variable, the proportional folder is searched for where the download folder with the audios is to be stored.
 
     """
-
+    if out_path is None:
+        out_path = path.join(getcwd(), "downloads", "audios")
 
     with ThreadPoolExecutor(max_workers=threads) as executor:
         for url in audios_url:
