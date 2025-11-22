@@ -12,25 +12,25 @@ def download(url, out_path=None):
     if out_path is None:
         out_path = path.join(getcwd(), "downloads", "videos")
     
+    # Progress bar state
+    progress_bar = {'bar': None}
+    
     def progress(stream, data_chunk, bytes_remaining):
         """Callback for download progress"""
-        # Calculate progress
-        total_size = stream.filesize
-        bytes_downloaded = total_size - bytes_remaining
-        percentage = (bytes_downloaded / total_size) * 100
+        # Create progress bar on first call
+        if progress_bar['bar'] is None:
+            total_size = stream.filesize
+            progress_bar['bar'] = tqdm(total=total_size, unit='B', unit_scale=True, 
+                                      desc='Downloading', bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt}')
         
-        # Update progress bar
-        if not hasattr(progress, 'bar'):
-            progress.bar = tqdm(total=total_size, unit='B', unit_scale=True, 
-                              desc='Downloading', bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt}')
-        
-        progress.bar.update(len(data_chunk))
+        # Update with the size of the chunk just downloaded
+        progress_bar['bar'].update(len(data_chunk))
 
-    def dowload_by_resolution(resolutions, video):
+    def download_by_resolution(resolutions, video):
        print(f"\n video title: {Fore.RED + video.title} \n {Fore.WHITE} \n qualities: {resolutions}")
 
-       video_quality_dowload = input("\n Type the quality: ")
-       return video_quality_dowload
+       video_quality_download = input("\n Type the quality: ")
+       return video_quality_download
 
     def get_resolutions(stream_data):
         resolutions = set()
@@ -46,11 +46,11 @@ def download(url, out_path=None):
     stream_data = video.streams.filter(file_extension="mp4")
     resolutions = get_resolutions(stream_data)
 
-    video_quality_to_dowload = dowload_by_resolution(resolutions=resolutions, video=video)
+    video_quality_to_download = download_by_resolution(resolutions=resolutions, video=video)
 
-    stream = video.streams.get_by_itag(video_itags.get(video_quality_to_dowload))
+    stream = video.streams.get_by_itag(video_itags.get(video_quality_to_download))
     stream.download(output_path=out_path)
     
     # Close progress bar if it exists
-    if hasattr(progress, 'bar'):
-        progress.bar.close()
+    if progress_bar['bar'] is not None:
+        progress_bar['bar'].close()

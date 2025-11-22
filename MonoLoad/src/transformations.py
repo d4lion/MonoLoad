@@ -30,7 +30,7 @@ def transform_config_to_dict(config_path: Optional[str] = None) -> dict:
             value = value.strip()
             
             # Parse value type without using eval()
-            if value.isdigit():
+            if value.lstrip('-').isdigit():
                 config_dict[key] = int(value)
             elif value.lower() in ("true", "false"):
                 config_dict[key] = value.lower() == "true"
