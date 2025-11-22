@@ -52,8 +52,8 @@ def DowloadAudioComponent(page):
         except Exception as e:
             print(e)
             page.banner = ft.Banner(
-                leading=ft.Icon(ft.icons.WARNING_AMBER_ROUNDED,
-                                color=ft.colors.AMBER, size=40),
+                leading=ft.Icon(ft.Icons.WARNING_AMBER_ROUNDED,
+                                color=ft.Colors.AMBER, size=40),
                 content=ft.Text(
                     "It seems that you have used an incorrect or invalid url, please check it and try again."
                 ),
